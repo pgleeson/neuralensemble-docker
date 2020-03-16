@@ -2,16 +2,16 @@
 # A Docker image for running neuronal network simulations
 #
 
-FROM neuralensemble/base:py2
+FROM neuralensemble/base_95:py2
 MAINTAINER andrew.davison@unic.cnrs-gif.fr
 
 
 #### Set versions
 
-ENV NEST_VER=2.16.0 
-ENV NRN_VER=7.6
+ENV NEST_VER=2.20.0 
+ENV NRN_VER=7.7
 ENV BRIAN_VER=1.4.4
-ENV PYNN_VER=0.9.4
+ENV PYNN_VER=0.9.5
 
 
 #### Install NEST
@@ -40,7 +40,7 @@ RUN mkdir $NEST; \
           -DPYTHON_LIBRARY=$VENV/lib/libpython2.7.so \
           -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
           $HOME/packages/$NEST; \
-    make; make install
+    make -j4; make install
 
 
 #### Install NEURON
@@ -54,7 +54,7 @@ RUN tar xzf $NRN.tar.gz; rm $NRN.tar.gz
 RUN mkdir $NRN; \
     cd $NRN; \
     $HOME/packages/$NRN/configure --with-paranrn --with-nrnpython=$VENV/bin/python --disable-rx3d --without-iv --prefix=$VENV; \
-    make; make install; \
+    make -j4; make install; \
     cd src/nrnpython; $VENV/bin/python setup.py install; \
     cd $VENV/bin; ln -s ../x86_64/bin/nrnivmodl
 
@@ -68,7 +68,7 @@ RUN $VENV/bin/pip install brian==$BRIAN_VER
 
 #### Install PyNN
 
-RUN $VENV/bin/pip install lazyarray==0.3.2 PyNN==$PYNN_VER
+RUN $VENV/bin/pip install lazyarray==0.3.3 PyNN==$PYNN_VER
 
 
 #### Set paths and activate Python environment

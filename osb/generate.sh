@@ -1,1 +1,1 @@
-docker build -t neuralensemble/osb:py2 .
+docker build -t neuralensemble/osb_95:py2 .

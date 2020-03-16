@@ -1,1 +1,1 @@
-docker build -t neuralensemble/base:py2 --no-cache .
+docker build -t neuralensemble/base_95:py2 --no-cache .

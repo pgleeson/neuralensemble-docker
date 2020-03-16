@@ -1,1 +1,1 @@
-docker run -i -t neuralensemble/simulationx:py2 /bin/bash
+docker run -i -t neuralensemble/simulationx_95:py2 /bin/bash
