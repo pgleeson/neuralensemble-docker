@@ -60,7 +60,7 @@ ENV NEST_INSTALL_DIR=$HOME/env/neurosci
 
 # Install NetPyNE
 
-RUN $HOME/env/neurosci/bin/pip install pandas==0.23.4 matplotlib==2.2.4 setuptools==42.0.1
+RUN $HOME/env/neurosci/bin/pip install pandas==0.23.4 matplotlib==2.2.4 setuptools==42.0.1 bokeh==1.4.0
 RUN git clone https://github.com/Neurosim-lab/netpyne.git  && \
     cd netpyne && \
     git checkout neuroml_updates && \
@@ -113,7 +113,7 @@ RUN cd brian && $HOME/env/neurosci/bin/python setup.py install && cd -
 
 # Install Brian2
 
-RUN omv install Brian2
+RUN $HOME/env/neurosci/bin/pip install brian2==2.3
 
 
 # Get some latest Python packages
