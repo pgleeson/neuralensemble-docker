@@ -100,7 +100,7 @@ RUN $HOME/env/neurosci/bin/pip uninstall pynn -y
 USER root
 RUN git clone https://github.com/NeuralEnsemble/PyNN.git  && \
     cd  PyNN && \
-    git checkout neuroml && \  
+    git checkout neuroml_pynn094 && \  
     $HOME/env/neurosci/bin/python  setup.py install && \
     cd -   # neuroml branch has the latest NML2 import/export code!
 RUN which python
