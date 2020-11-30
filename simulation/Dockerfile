@@ -24,8 +24,8 @@ ENV NEST=nest-simulator-$NEST_VER
 WORKDIR $HOME/packages
 RUN wget https://github.com/nest/nest-simulator/archive/v$NEST_VER.tar.gz -O $HOME/packages/$NEST.tar.gz;
 RUN tar xzf $NEST.tar.gz; rm $NEST.tar.gz
-RUN git clone --depth 1 https://github.com/INCF/libneurosim.git
-RUN cd libneurosim; ./autogen.sh
+RUN git clone https://github.com/INCF/libneurosim.git
+RUN cd libneurosim; git checkout 03646747c8fe64fa3439ac2d282623b659f60c22; ./autogen.sh
 
 RUN mkdir $VENV/build
 WORKDIR $VENV/build
