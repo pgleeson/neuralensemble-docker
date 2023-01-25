@@ -23,7 +23,7 @@ RUN /bin/bash -c "source ~/env/neurosci/bin/activate"
 
 # Install NeuroML Python libraries
 
-RUN $VENV/bin/pip install pyNeuroML==0.5.19 # will set versions of libNeuroML, pylems, NeuroMLlite...
+RUN $VENV/bin/pip install pyNeuroML==0.7.5 # will set versions of libNeuroML, pylems, NeuroMLlite...
 
 
 # Install OMV
@@ -59,9 +59,7 @@ ENV NEST_INSTALL_DIR=$HOME/env/neurosci
 
 # Install NetPyNE
 
-RUN apt-get remove -y python3-cycler python3-matplotlib python3-dateutil
-#RUN $VENV/bin/pip install pandas==0.23.4 python-dateutil==2.5.0
-RUN $VENV/bin/pip install netpyne==1.0.0.2
+RUN $VENV/bin/pip install netpyne==1.0.2.1
 
 
 ######### Disabled for now, issues compiling on bionic....
@@ -111,13 +109,13 @@ RUN git clone https://github.com/NeuralEnsemble/PyNN.git  && \
     cd -   # neuroml branch has the latest NML2 import/export code!
 RUN which python
 
-# Update Brian
+# Update Brian - no, not in python 3...
 
 ###RUN git clone https://github.com/brian-team/brian.git
 ###RUN cd brian && $HOME/env/neurosci/bin/python setup.py install && cd -
 
 
-# Install Brian2
+# Install Brian2 - now version set in simulation/Dockerfile
 
 ##RUN $HOME/env/neurosci/bin/pip install Brian2
 
